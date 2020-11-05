@@ -12,7 +12,7 @@ import (
 
 const (
 	// 挂载了 memory subsystem的hierarchy的根目录位置
-	cgroupMemoryHierarchyMount = "/sys/fs/cgroup/memory"
+	cgroupMemoryHierarchyMount = "/sys/fs/cgroups/memory"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 	fmt.Printf("%+v", cmd.Process.Pid)
 
 	// 创建子cgroup
-	newCgroup := path.Join(cgroupMemoryHierarchyMount, "cgroup-demo-memory")
+	newCgroup := path.Join(cgroupMemoryHierarchyMount, "cgroups-demo-memory")
 	if err := os.Mkdir(newCgroup, 0755); err != nil {
 		panic(err)
 	}
