@@ -5,12 +5,10 @@ import (
 	"os"
 )
 
-const usage = `dockerme`
-
 func main() {
 	app := cli.NewApp()
 	app.Name = "dockerme"
-	app.Usage = usage
+	app.Usage = "dockerme"
 
 	app.Commands = []cli.Command{
 		runCommand,
