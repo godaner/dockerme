@@ -10,6 +10,9 @@ import (
 )
 
 // 获取cgroup在文件系统中的绝对路径
+//  subsystem : memory
+//  cgroupPath : dockerme
+//  result like : /sys/fs/cgroup/dockerme
 func GetCgroupPath(subsystem string, cgroupPath string, autoCreate bool) (string, error) {
 	cgroupRootPath, err := findCgroupMountPoint(subsystem)
 	if err != nil {
@@ -28,6 +31,8 @@ func GetCgroupPath(subsystem string, cgroupPath string, autoCreate bool) (string
 }
 
 // 找到挂载了 subsystem 的hierarchy cgroup根节点所在的目录
+//  subystem : memory
+//  result like : /sys/fs/cgroup/memory
 func findCgroupMountPoint(subystem string) (string, error) {
 	f, err := os.Open("/proc/self/mountinfo")
 	if err != nil {
